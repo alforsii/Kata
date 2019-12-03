@@ -37,16 +37,16 @@
 //     let idx = w.indexOf(Math.min(...w));
 //     w[idx] += t;
 //   }
-//   console.log('Output for: queueTime -> Math.max(...w)', Math.max(...w));
 //   return Math.max(...w);
 // }
 
 //or ==>
 function queueTime(customers, n) {
   let tills = Array(n).fill(0);
-
   customers.forEach(customer => {
+    //grab index of min(smallest) number
     let nextTill = tills.indexOf(Math.min(...tills));
+    //and add to that next customer waiting time
     tills[nextTill] += customer;
   });
 
@@ -59,7 +59,6 @@ function queueTime(customers, n) {
 //   //TODO
 //   let max = 0;
 //   let min = 0;
-//   let newMax = 0;
 //   let waitTime = 0;
 //   let customersInTill = [];
 //   if (customers.length === 0) {
@@ -70,7 +69,6 @@ function queueTime(customers, n) {
 //     });
 //   } else if (customers.length === n) {
 //     waitTime = Math.max(...customers);
-//     // return waitTime;
 //   } else {
 //     const copyArr = [...customers];
 //     for (let k = 0; k < copyArr.length; k++) {
@@ -78,18 +76,14 @@ function queueTime(customers, n) {
 //         customersInTill.push(copyArr[k]);
 //         copyArr.splice(k, 1);
 //       }
-
 //       if (customersInTill.length === n) {
 //         max = Math.max(...customersInTill);
 //         min = Math.min(...customersInTill);
 //         if (max === min) {
-//           waitTime += customersInTill[0];
+//           waitTime += max;
 //           customersInTill.splice(0);
-
-//           // return;
 //         } else {
 //           newMax = max - min;
-
 //           for (let i = 0; i < customersInTill.length; i++) {
 //             if (customersInTill[i] === min) {
 //               customersInTill.splice(i, 1);
@@ -109,21 +103,14 @@ function queueTime(customers, n) {
 //       if (copyArr.length === 0 && customersInTill.length < n) {
 //         max = Math.max(...customersInTill);
 //         if (customersInTill.length === 0) max = 0;
-//         console.log(
-//           'Output for: queueTime -> customersInTill',
-//           customersInTill
-//         );
-//         console.log('Output for: queueTime -> max', max);
 //         waitTime += max;
-//         console.log('Output for: queueTime -> waitTime', waitTime);
-//         // return waitTime;
 //       }
 //       if (copyArr.length > 0) {
 //         k = -1;
 //       }
 //     }
-//     // return waitTime;
 //   }
+//   console.log('Output for: queueTime -> waitTime', waitTime);
 //   return waitTime;
 // }
 
