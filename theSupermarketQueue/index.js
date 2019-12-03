@@ -29,17 +29,32 @@
 // The order of the queue NEVER changes, and
 // The front person in the queue (i.e. the first element in the array/list) proceeds to a till as soon as it becomes free.
 // N.B. You should assume that all the test input will be valid, as specified above.
+
+// ---------------------------Best solution------------------------
+// function queueTime(customers, n) {
+//   var w = new Array(n).fill(0);
+//   for (let t of customers) {
+//     let idx = w.indexOf(Math.min(...w));
+//     w[idx] += t;
+//   }
+//   console.log('Output for: queueTime -> Math.max(...w)', Math.max(...w));
+//   return Math.max(...w);
+// }
+
+//or ==>
 function queueTime(customers, n) {
-  var w = new Array(n).fill(0);
-  for (let t of customers) {
-    let idx = w.indexOf(Math.min(...w));
-    w[idx] += t;
-  }
-  console.log('Output for: queueTime -> Math.max(...w)', Math.max(...w));
-  return Math.max(...w);
+  let tills = Array(n).fill(0);
+
+  customers.forEach(customer => {
+    let nextTill = tills.indexOf(Math.min(...tills));
+    tills[nextTill] += customer;
+  });
+
+  return Math.max(...tills);
 }
 // P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
 
+/// /----------------------My solution ))))))))))))))))))))
 // function queueTime(customers, n) {
 //   //TODO
 //   let max = 0;
