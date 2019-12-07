@@ -52,4 +52,4 @@ var whatTimeIsIt = function(angle) {
 //   return `${h == 0 ? 12 : h > 9 ? h : '0' + h}:${m > 9 ? m : '0' + m}`;
 // };
 
-console.log('Output for: whatTimeIsIt(30)', whatTimeIsIt(1));
+console.log('Output for: whatTimeIsIt(30)', whatTimeIsIt(95));
