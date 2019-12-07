@@ -25,7 +25,6 @@ function pigIt(str) {
   console.log('Output for: pigIt -> strArr', newArr.join(' '));
   return newArr.join(' ');
 }
-
 // Examples
 pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 pigIt('Hello world !'); // elloHay orldway !
