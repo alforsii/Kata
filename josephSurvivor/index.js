@@ -16,6 +16,7 @@
 
 // Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
 
+//1. my solution
 function josephusSurvivor(n, k) {
   //your code here
   let arr = [];
@@ -27,16 +28,19 @@ function josephusSurvivor(n, k) {
     count++;
 
     if (count % k === 0 && arr.length > 1) {
-      //   console.log('Output for: arr', arr[j]);
       arr.splice(j, 1);
       j = j - 1;
     }
     if (j === arr.length - 1 && arr.length > 1) j = -1;
   }
 
-  console.log('Output for: josephusSurvivor -> arr', arr[0]);
   return arr[0];
 }
+
+//2.another way.
+// function josephusSurvivor(n, k) {
+//   return n < 1 ? 1 : ((josephusSurvivor(n - 1, k) + --k) % n) + 1;
+// }
 
 josephusSurvivor(7, 3); //,4)
 josephusSurvivor(11, 19); //,10)
