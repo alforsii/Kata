@@ -17,33 +17,40 @@
 // Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
 
 //1. my solution
-function josephusSurvivor(n, k) {
-  //your code here
-  let arr = [];
-  let count = 0;
-  for (let i = 1; i <= n; i++) {
-    arr.push(i);
-  }
-  for (let j = 0; j < arr.length; j++) {
-    count++;
+// function josephusSurvivor(n, k) {
+//   //your code here
+//   let arr = [];
+//   let count = 0;
+//   for (let i = 1; i <= n; i++) arr.push(i); //no need curly braces when one line of code
 
-    if (count % k === 0 && arr.length > 1) {
-      arr.splice(j, 1);
-      j = j - 1;
-    }
-    if (j === arr.length - 1 && arr.length > 1) j = -1;
-  }
+//   for (let j = 0; j < arr.length; j++) {
+//     count++;
 
-  return arr[0];
-}
+//     if (count % k === 0 && arr.length > 1) {
+//       arr.splice(j, 1);
+//       j = j - 1;
+//     }
+//     if (j === arr.length - 1 && arr.length > 1) j = -1;
+//   }
+
+//   return arr[0];
+// }
 
 //2.another way.
 // function josephusSurvivor(n, k) {
 //   return n < 1 ? 1 : ((josephusSurvivor(n - 1, k) + --k) % n) + 1;
 // }
 
+//3.another solution
+function josephusSurvivor(n, k) {
+  res = 1;
+  for (var i = 1; i <= n; i++) res = ((res + k - 1) % i) + 1; //no need curly braces when one line of code
+
+  return res;
+}
+
 josephusSurvivor(7, 3); //,4)
-josephusSurvivor(11, 19); //,10)
-josephusSurvivor(1, 300); //,1)
-josephusSurvivor(14, 2); //,13)
-josephusSurvivor(100, 1); //,100)
+// josephusSurvivor(11, 19); //,10)
+// josephusSurvivor(1, 300); //,1)
+// josephusSurvivor(14, 2); //,13)
+// josephusSurvivor(100, 1); //,100)
