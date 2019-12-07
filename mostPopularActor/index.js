@@ -9,13 +9,14 @@ var americanActors = [
 ];
 // console.log(mostPopularActor(americanActors)); // => "Jack Nicholson"
 function mostPopularActor(actors) {
-  let pop = actors[0].popularityScore;
+  let popScore = actors[0].popularityScore;
 
   for (let i = 0; i < actors.length; i++) {
-    if (pop < actors[i].popularityScore) pop = actors[i].popularityScore;
+    if (popScore < actors[i].popularityScore)
+      popScore = actors[i].popularityScore;
   }
   let popActor = actors.filter(actor => {
-    return actor.popularityScore === pop;
+    return actor.popularityScore === popScore;
   });
   console.log('Output for: mostPopularActor -> popActor', popActor);
 }
