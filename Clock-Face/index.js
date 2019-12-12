@@ -28,6 +28,7 @@ var whatTimeIsIt = function(angle) {
   let hour = Math.floor(angle / 30);
   if (angle === 0 || (angle > 0 && angle < 30)) hour = 12;
   let reminder = angle % 30;
+  //mins I find with proportion method: every 30deg we have 1hour === 60mins. So if (30deg === 60mins) => 1deg how many mins? => mins === (1deg * 60mins)/ 30deg ===(1deg * 2mins)/1deg or === 2mins
   let mins = Math.floor(reminder * 2);
   if (hour < 10) hour = '0' + hour;
   if (mins < 10) mins = '0' + mins;
