@@ -15,13 +15,41 @@
 // part1:  c   d   w         = cdw
 // part2:    o   e   a r s   = oears
 
+//Solution-1
 function isMerge(s, part1, part2) {
-  let oneS = part1.split('');
-  let secS = part2.split('');
-  let joinedWord = oneS.map((el, i) => (el === ' ' ? (el = secS[i]) : el));
-  return s === joinedWord.join('') ? true : false;
-  console.log(s === joinedWord.join(''));
+  return !s
+    ? !(part1 || part2)
+    : (s[0] == part1[0] && isMerge(s.slice(1), part1.slice(1), part2)) ||
+        (s[0] == part2[0] && isMerge(s.slice(1), part1, part2.slice(1)));
 }
 
-isMerge('c o d e w a r s', 'c   d   w      ', '  o   e   a r s');
-console.log(isMerge('c o d e w a r s', 'c   d   w      ', '  o   e   a r s'));
+//Solution-2
+function isMerge(s, part1, part2) {
+  if (s === '' && part1 === '' && part2 === '') return true;
+
+  if (s !== '') {
+    if (s[0] === part1[0] && part1[0] === part2[0]) {
+      // we make two branches of an recursion and get OR of the answers
+      return (
+        isMerge(s.slice(1), part1.slice(1), part2) ||
+        isMerge(s.slice(1), part1, part2.slice(1))
+      );
+    } else if (s[0] === part1[0]) {
+      return isMerge(s.slice(1), part1.slice(1), part2);
+    } else if (s[0] === part2[0]) {
+      return isMerge(s.slice(1), part1, part2.slice(1));
+    }
+  }
+
+  return false;
+}
+
+// isMerge('codewars', 'code', 'wars');
+// isMerge('codewars', 'cdw', 'oearsss');
+console.log(isMerge('codewars', 'cdw', 'oearsss')); //false
+console.log(isMerge('codewars', 'cdwr', 'oeas')); //true
+// isMerge('codewars', 'code', 'wasr');
+console.log(isMerge('codewars', 'code', 'wasr')); //false
+console.log(isMerge('codewars', 'code', 'wars')); //true
+// isMerge('c o d e w a r s', 'c   d   w      ', '  o   e   a r s');
+// console.log(isMerge('c o d e w a r s', 'c   d   w      ', '  o   e   a r s'));
