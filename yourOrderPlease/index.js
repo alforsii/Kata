@@ -15,7 +15,9 @@
 //My Solution:
 function order(words) {
   // ...
+  //this is just the array of the original letters
   let arr1 = words.split(' ');
+  //extracting the numbers from each word
   let arr2 = words
     .split(' ')
     .map(word => {
@@ -25,6 +27,9 @@ function order(words) {
         .join('');
     })
     .sort((a, b) => a - b);
+  //after getting the extracted and sorted number in arr2
+  //now I am looping through that ordered numbers arr2 and for each number I'm looping
+  //whole arr1 to get the letter that has the particular number to put them in order
   return arr2
     .map((num, i) => {
       for (let i = 0; i < arr1.length; i++) {
@@ -34,8 +39,6 @@ function order(words) {
       }
     })
     .join(' ');
-  console.log(arr1);
-  return arr2;
 }
 
 //Solution-2:
