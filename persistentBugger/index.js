@@ -27,3 +27,10 @@ function persistence(num) {
 persistence(999);
 persistence(39);
 persistence(4);
+
+//2. Solution -2
+// const persistence = num => {
+//     return `${num}`.length > 1
+//       ? 1 + persistence(`${num}`.split('').reduce((a, b) => a * +b))
+//       : 0;
+//   }
