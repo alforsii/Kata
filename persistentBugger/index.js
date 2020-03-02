@@ -29,8 +29,23 @@ persistence(39);
 persistence(4);
 
 //2. Solution -2
-// const persistence = num => {
-//     return `${num}`.length > 1
-//       ? 1 + persistence(`${num}`.split('').reduce((a, b) => a * +b))
-//       : 0;
-//   }
+let persistence = num => {
+  return `${num}`.length > 1
+    ? 1 + persistence(`${num}`.split('').reduce((a, b) => a * +b))
+    : 0;
+};
+
+//3.Best practice
+persistence = num => {
+  let counter = 0;
+  num = num.toString();
+  while (num.length > 1) {
+    counter++;
+    num = num
+      .split('')
+      .map(Number)
+      .reduce((a, b) => a * b)
+      .toString();
+  }
+  return counter;
+};
