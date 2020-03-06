@@ -16,8 +16,19 @@
 
 // array_diff([1,2,2,2,3],[2]) == [1,3]
 
+//1. Solution - 1
 function array_diff(a, b) {
   return a.filter(el => !b.includes(el)) || a;
+}
+
+//2. Solution - 2
+function array_diff(a, b) {
+  return a.filter(x => b.indexOf(x) == -1);
+}
+//3. Solution - 3
+function array_diff(a, b) {
+  b = new Set(b);
+  return a.filter(val => !b.has(val));
 }
 
 // array_diff([1, 2, 2, 2, 3], [2]); //== [1,3]
