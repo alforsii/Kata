@@ -17,20 +17,14 @@
 // array_diff([1,2,2,2,3],[2]) == [1,3]
 
 function array_diff(a, b) {
-  let newArr = a.filter((ael, i) => {
-    return !b.includes(ael);
-  });
-  if (b.length === 0) newArr = a;
-
-  console.log('Output for: functionarray_diff -> newArr', newArr);
-  return newArr;
+  return a.filter(el => !b.includes(el)) || a;
 }
 
-array_diff([1, 2, 2, 2, 3], [2]); //== [1,3]
+// array_diff([1, 2, 2, 2, 3], [2]); //== [1,3]
 
-array_diff(
-  [18, -19, 7, -12, 1, -17, 11, 14, 1, 6],
-  [-17, 1, 7, 11, 6, 18, 14, -19, -12]
-);
+// array_diff(
+//   [18, -19, 7, -12, 1, -17, 11, 14, 1, 6],
+//   [-17, 1, 7, 11, 6, 18, 14, -19, -12]
+// );
 
 // Should work for random arrays too - Expected: [], instead got: [7, 1, 1]
