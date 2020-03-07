@@ -30,11 +30,13 @@
 
 function LCS(x, y) {
   //TODO
-  let arrX = x.split(''),
-    arrY = y.split('');
-  return x.length >= y.length
-    ? arrY.filter(yElem => arrX.indexOf(yElem) !== -1).join('')
-    : arrX.filter(xElem => arrY.indexOf(xElem) !== -1).join('');
+  x = x.split('');
+  y = y.split('');
+  return x.length === y.length
+    ? x.join('')
+    : x.length > y.length
+    ? y.filter(yElem => x.indexOf(yElem) !== -1).join('')
+    : x.filter(xElem => y.indexOf(xElem) !== -1).join('');
 }
 
 LCS('a', 'b'); //, "");
