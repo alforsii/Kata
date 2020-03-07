@@ -22,29 +22,21 @@
 // 0 <= angle <= 360
 
 //1. My solution
+// if (angle > 360) angle = angle - 360;
+// let hr = Math.floor(angle / 30);
+// if (angle === 0 || (angle > 0 && angle < 30)) hr = 12;
+// let reminder = angle % 30;
+// let m = Math.floor(reminder * 2);
+// if (hr < 10) hr = '0' + hr;
+// if (m < 10) m = '0' + m;
+// return `${hr}:${m}`;
 var whatTimeIsIt = function(angle) {
   // Your code here
-  if (angle > 360) return 'Please enter valid degree from 0 to 360. Thanks!';
-  let hour = Math.floor(angle / 30);
-  if (angle === 0 || (angle > 0 && angle < 30)) hour = 12;
-  let reminder = angle % 30;
-  //mins I find with proportion method: every 30deg we have 1hour === 60mins. So if (30deg === 60mins) => 1deg how many mins? => mins === (1deg * 60mins)/ 30deg ===(1deg * 2mins)/1deg or === 2mins
-  let mins = Math.floor(reminder * 2);
-  if (hour < 10) hour = '0' + hour;
-  if (mins < 10) mins = '0' + mins;
-  //or call addZero()
-  //   hour = addZero(hour);
-  //   mins = addZero(mins);
-  return `${hour}:${mins}`;
+  if (angle > 360) angle = angle - 360;
+  let hr = Math.floor(angle / 30);
+  let m = Math.floor((angle % 30) * 2);
+  return `${hr == 0 ? 12 : hr > 9 ? hr : '0' + hr}:${m > 9 ? m : 'o' + m}`;
 };
-
-// whatTimeIsIt(90);
-// function addZero(i) {
-//   if (i < 10) {
-//     i = '0' + i;
-//   }
-//   return i;
-// }
 
 // // 2.other solutions
 // var whatTimeIsIt = function(angle) {
@@ -53,4 +45,4 @@ var whatTimeIsIt = function(angle) {
 //   return `${h == 0 ? 12 : h > 9 ? h : '0' + h}:${m > 9 ? m : '0' + m}`;
 // };
 
-console.log('Output for: whatTimeIsIt(30)', whatTimeIsIt(95));
+// console.log('Output for: whatTimeIsIt(30)', whatTimeIsIt(455));
