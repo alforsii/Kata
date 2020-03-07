@@ -16,24 +16,39 @@
 
 // If a string contains all repeating characters, it should return an empty string ("") or None -- see sample tests.
 
+//1. Solution - 1
+// function firstNonRepeatingLetter(s) {
+//   // Add your code here
+
+//   for (let i = 0; i < s.length; i++) {
+//     let s1 = s.toLowerCase();
+//     if (s1.indexOf(s1[i]) == i && s1.indexOf(s1[i], i + 1) == -1) {
+//       return s[i];
+//     }
+//   }
+//   return '';
+// }
+
+//2. Solution - 2
 function firstNonRepeatingLetter(s) {
   // Add your code here
-
-  for (let i = 0; i < s.length; i++) {
-    let s1 = s.toLowerCase();
-    if (s1.indexOf(s1[i]) == i && s1.indexOf(s1[i], i + 1) == -1) {
-      return s[i];
-    }
-  }
-  return '';
+  return (
+    s
+      .split('')
+      .filter(
+        l =>
+          s.toLowerCase().indexOf(l.toLowerCase()) ==
+          s.toLowerCase().lastIndexOf(l.toLowerCase())
+      )[0] || ''
+  );
 }
 
-// other way
-function firstNonRepeatingLetter(s) {
-  for (var i in s) {
-    if (s.match(new RegExp(s[i], 'gi')).length === 1) {
-      return s[i];
-    }
-  }
-  return '';
-}
+//3. Solution - 3
+// function firstNonRepeatingLetter(s) {
+//   for (var i in s) {
+//     if (s.match(new RegExp(s[i], 'gi')).length === 1) {
+//       return s[i];
+//     }
+//   }
+//   return '';
+// }
