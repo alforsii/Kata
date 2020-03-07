@@ -16,11 +16,12 @@
 
 // Notes and tips: using the solution to the other kata to check your function may be helpful, but as much larger numbers will be used, using an array/list to compute the number of the survivor may be too slow; you may assume that both n and k will always be >=1.
 
-//1. my solution
+//1a. my solution
 // function josephusSurvivor(n, k) {
 //   //your code here
 //   let arr = [];
 //   let count = 0;
+//   // 1. Create arr with for loop
 //   for (let i = 1; i <= n; i++) arr.push(i); //no need curly braces when one line of code
 
 //   for (let j = 0; j < arr.length; j++) {
@@ -35,6 +36,25 @@
 
 //   return arr[0];
 // }
+//1b. my solution
+function josephusSurvivor(n, k) {
+  //your code here
+  let count = 0;
+  //2. Create arr without for loop
+  let arr = Array.from({ length: n }, (v, i) => i + 1);
+
+  for (let j = 0; j < arr.length; j++) {
+    count++;
+
+    if (count % k === 0 && arr.length > 1) {
+      arr = arr.filter(num => num !== arr[j]);
+      j = j - 1;
+    }
+    if (j === arr.length - 1 && arr.length > 1) j = -1;
+  }
+
+  return arr[0];
+}
 
 //2.another way.
 // function josephusSurvivor(n, k) {
@@ -42,15 +62,16 @@
 // }
 
 //3.another solution
-function josephusSurvivor(n, k) {
-  res = 1;
-  for (var i = 1; i <= n; i++) res = ((res + k - 1) % i) + 1; //no need curly braces when one line of code
-
-  return res;
-}
+// function josephusSurvivor(n, k) {
+//   res = 1;
+//   for (var i = 1; i <= n; i++) res = ((res + k - 1) % i) + 1; //no need curly braces when one line of code
+//   return res;
+// }
 
 josephusSurvivor(7, 3); //,4)
+console.log(josephusSurvivor(7, 3));
 // josephusSurvivor(11, 19); //,10)
+console.log(josephusSurvivor(11, 19));
 // josephusSurvivor(1, 300); //,1)
 // josephusSurvivor(14, 2); //,13)
 // josephusSurvivor(100, 1); //,100)
