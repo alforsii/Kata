@@ -24,23 +24,23 @@ let array = [
 // }
 
 //2. Solution - 2 | map() with Math.max and .min
-function getYs() {
-  return array.map(d => d.year);
+function getYs(arr) {
+  return arr.map(d => d.year);
 }
-function getMinY() {
-  return Math.min(...getYs());
+function getMinY(arr) {
+  return Math.min(...getYs(arr));
 }
-function getMaxY() {
-  return Math.max(...getYs());
+function getMaxY(arr) {
+  return Math.max(...getYs(arr));
 }
 
 //3. Solution - 3 | reduce() with Math.max and .min
-function getMinY(data) {
-  return data.reduce((min, b) => Math.min(min, b.year), data[0].year);
-}
-function getMaxY(data) {
-  return data.reduce((max, b) => Math.max(max, b.year), data[0].year);
-}
+// function getMinY(data) {
+//   return data.reduce((min, b) => Math.min(min, b.year), data[0].year);
+// }
+// function getMaxY(data) {
+//   return data.reduce((max, b) => Math.max(max, b.year), data[0].year);
+// }
 //it doesn't work with node
 console.log('getMinY(arr)', getMinY(array));
 //it doesn't work with node
