@@ -7,13 +7,7 @@
 
 function filter_list(l) {
   // Return a new array with the strings filtered out
-  return (numbers = l.filter(el => {
-    return typeof el === 'number';
-  }));
+  return (numbers = l.filter(el => typeof el === 'number'));
 }
 
-console.log(
-  "Output for: filter_list([1,2,'a','b'])",
-  filter_list([1, 2, 'a', 'b'])
-);
-filter_list([1, 2, 'a', 'b']);
+// console.log(filter_list([1, 2, 'a', 'b']));
