@@ -38,26 +38,26 @@
 // }
 
 //3.
-// function findMissingLetter(array) {
-//   let first = array[0].charCodeAt(0)
-//   for (let i = 1; i < array.length; i++) {
-//     if (first + i !== array[i].charCodeAt(0)) {
-//       return String.fromCharCode(first + i)
-//     }
-//   }
-//   throw new Error("Invalid input")
-// }
+function findMissingLetter(array) {
+  let str = array.join('');
+  for (let i = 0; i < str.length; i++) {
+    let code = str.charCodeAt(i);
+    if (code + 1 !== str.charCodeAt(i + 1)) {
+      return String.fromCharCode(code + 1);
+    }
+  }
+}
 
 //4.
-const findMissingLetter = array => {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(
-    ''
-  );
-  const start = alphabet.indexOf(array[0]);
-  return alphabet
-    .slice(start, start + array.length)
-    .find(el => !array.includes(el));
-};
+// const findMissingLetter = array => {
+//   const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(
+//     ''
+//   );
+//   const start = alphabet.indexOf(array[0]);
+//   return alphabet
+//     .slice(start, start + array.length)
+//     .find(el => !array.includes(el));
+// };
 
 // findMissingLetter(); //"e"
 // findMissingLetter(['a', 'b', 'c', 'd', 'f']); //"e"
