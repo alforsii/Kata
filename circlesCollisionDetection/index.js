@@ -17,26 +17,23 @@
 
 // Here's a geometric diagram of what the circles passed in represent:
 
+//1. Solution - 1
+// let xDistance = x2 - x1; //x2 is circle2 'x' position, x1 circle1 'x' position on x axel
+// let yDistance = y2 - y1; //y2 is circle2 'y' position, y1 circle1 'y' position on y axel
+// r1 + r2 >= Distance ? collision : notCollision; (check the image circlesCollision.gif)
+// r1 - circle1 radius, r2 circle2
 function collision(x1, y1, radius1, x2, y2, radius2) {
   // collision?
-  let xDistance = x2 - x1;
-  let yDistance = y2 - y1;
-  let distance = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
-  if (distance < radius1 + radius2) {
-    return true;
-  } else {
-    return false;
-  }
+  const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  return radius1 + radius2 >= distance ? true : false;
 }
 
-//other ways.
-//1.
-// function collision(x1, y1, radius1, x2, y2, radius2) {
-//     return Math.hypot((x1 - x2), (y1 - y2))<radius1+radius2
-//   }
+//2. Solution - 2
+function collision(x1, y1, radius1, x2, y2, radius2) {
+  return Math.hypot(x1 - x2, y1 - y2) < radius1 + radius2;
+}
 
-//   //2.
-//   function collision(x1, y1, r1, x2, y2, r2)
-// {
-//     return (x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2
-// }
+//3. Solution - 3
+function collision(x1, y1, r1, x2, y2, r2) {
+  return (x1 - x2) ** 2 + (y1 - y2) ** 2 <= (r1 + r2) ** 2;
+}
