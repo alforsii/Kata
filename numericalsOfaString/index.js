@@ -1,3 +1,4 @@
+// https://www.codewars.com/kata/5b4070144d7d8bbfe7000001/solutions/javascript
 // You are given an input string.
 
 // For each symbol in the string if it's the first character occurrence, replace it with a '1', else replace it with the amount of times you've already seen it...
@@ -36,3 +37,11 @@ function numericals(s){
     return s.split('').map(char => count[char] = ++count[char] || 1).join('');
   }
     
+  //3.
+  const numericals = s => {
+    const occ = {}
+    return s.split('').reduce((res, ch) => {
+      occ[ch] = (occ[ch] || 0) + 1
+      return `${res}${occ[ch]}`
+    }, '')
+  }
